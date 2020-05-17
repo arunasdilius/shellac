@@ -1,0 +1,87 @@
+.bl {
+  display: block !important;
+}
+
+.inbl {
+  display: inline-block !important;
+}
+
+.in {
+  display: inline !important;
+}
+
+.vam {
+  vertical-align: middle !important;
+}
+
+.vab {
+  vertical-align: baseline !important;
+}
+
+.abs {
+  position: absolute !important;
+}
+
+.rel {
+  position: relative !important;
+}
+
+.fix {
+  position: fixed !important;
+}
+
+.clear {
+  &:before, &:after {
+    content: '';
+    clear: both;
+    display: block;
+  }
+}
+
+.right {
+  float: right !important;
+}
+
+.left {
+  float: left !important;
+}
+
+.ww {
+  width: 100% !important;
+}
+
+.max-h {
+  max-width: $max-h;
+}
+
+.max-m {
+  max-width: $max-m;
+}
+
+.max-s {
+  max-width: $max-s;
+}
+
+.hh {
+  height: 100% !important;
+}
+
+.c, .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Generating size related classes:
+// width, height, margins, paddings
+@each $size in $sizes {
+  $key: str-replace(inspect($size), '.', '');
+  .w-#{$key} {
+    width: size($size) !important;
+  }
+  .h-#{$key} {
+    height: size($size) !important;
+  }
+  @include sizeHelper(margin, $key, $size, '');
+  @include sizeHelper(padding, $key, $size, '');
+}

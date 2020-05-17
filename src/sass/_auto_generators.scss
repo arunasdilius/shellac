@@ -1,0 +1,97 @@
+@if not global-variable-exists('primary-light') {
+  $primary-light: generateColorLight($primary) !global;
+}
+
+@if not global-variable-exists('primary-dark') {
+  $primary-dark: generateColorDark($primary) !global;
+}
+
+@if not global-variable-exists('secondary') {
+  $secondary: generateColorSecondary($primary) !global;
+}
+
+@if not global-variable-exists('secondary-light') {
+  $secondary-light: generateColorLight($secondary) !global;
+}
+
+@if not global-variable-exists('secondary-dark') {
+  $secondary-dark: generateColorDark($secondary) !global;
+}
+
+@if not global-variable-exists('accent') {
+  $accent: generateColorAccent($primary) !global;
+}
+
+@if not global-variable-exists('black') {
+  $black: #1a1a1a !global;
+}
+
+@if not global-variable-exists('white') {
+  $white: #ffffff !global;
+}
+
+@if not global-variable-exists('grey') {
+  $grey: generateColorGrey($black, $white) !global;
+}
+
+@if not global-variable-exists('grey-light') {
+  $grey-light: generateColorLightGrey() !global;
+}
+
+@if not global-variable-exists('grey-dark') {
+  $grey-dark: generateColorDarkGrey() !global;
+}
+
+@if not global-variable-exists('success') {
+  $success: generateColorSuccess($primary) !global;
+}
+
+@if not global-variable-exists('warning') {
+  $warning: generateColorWarning($primary) !global;
+}
+
+@if not global-variable-exists('info') {
+  $info: generateColorInfo($primary) !global;
+}
+
+@if not global-variable-exists('danger') {
+  $danger: generateColorDanger($primary) !global;
+}
+
+$colors: (
+        "b": $black,
+        "w": $white,
+        "g": $grey,
+        "g-l": $grey-light,
+        "g-d": $grey-dark,
+        "p": $primary,
+        "p-l": $primary-light,
+        "p-d": $primary-dark,
+        "s": $secondary,
+        "s-l": $secondary-light,
+        "s-d": $secondary-dark,
+        "a": $accent,
+        'success': $success,
+        'warning': $warning,
+        'info': $info,
+        'danger': $danger
+);
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  @return $string;
+}
+
+@function getShortName($str) {
+  @if (str-index($str, '-') == null) {
+    $str: str-slice($str, 0, 1);
+  } @else {
+    $index: str-index($str, '-');
+    $str: "#{str-slice($str, 0, 1)}-#{getShortName(str-slice($str, $index + 1))}";
+  }
+  @return $str;
+}
+

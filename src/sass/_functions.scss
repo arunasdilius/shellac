@@ -1,0 +1,103 @@
+@function normalizeSaturation($saturation){
+  @if ($saturation < 30%) {
+    $saturation: 40%;
+  } @else if ($saturation > 70%) {
+    $saturation: 60%;
+  }
+  @return $saturation;
+}
+
+@function generateColorSecondary($color) {
+  $hue: hue($color) + 60deg;
+  $saturation: saturation($color);
+  $lightness: lightness($color);
+  @return hsl($hue, $saturation, $lightness);
+}
+
+@function generateColorLight($color) {
+  $hue: hue($color);
+  $saturation: saturation($color);
+  $lightness: lightness($color) + ((100% - lightness($color)) / 2);
+  @return hsl($hue, $saturation, $lightness);
+}
+
+@function generateColorDark($color) {
+  $hue: hue($color);
+  $saturation: saturation($color);
+  $lightness: lightness($color)/ 2;
+  @return hsl($hue, $saturation, $lightness);
+}
+
+@function generateColorAccent($color) {
+  @return complement($color);
+}
+
+@function generateColorGrey($black, $white) {
+  /*
+  $black_lightness: lightness($black);
+  $white_lightness: lightness($white);
+  $lightness: abs(($white_lightness - $black_lightness) / 2);
+  @return hsl(0deg, 0%, $lightness);
+  */
+  $hue: hue($black);
+  $saturation: saturation($black);
+  $lightness: lightness($black);
+  @return hsla($hue, $saturation, $lightness, 0.5);
+}
+
+@function generateColorLightGrey() {
+  $hue: hue($black);
+  $saturation: saturation($black);
+  $lightness: lightness($black);
+  @return hsla($hue, $saturation, $lightness, 0.10);
+}
+
+@function generateColorDarkGrey() {
+  $hue: hue($black);
+  $saturation: saturation($black);
+  $lightness: lightness($black);
+  @return hsla($hue, $saturation, $lightness, 0.75);
+}
+
+@function generateColorSuccess($color) {
+  $saturation: normalizeSaturation(saturation($color));
+  @return hsl(120deg, $saturation, 50%);
+}
+
+@function generateColorWarning($color) {
+  $saturation: normalizeSaturation(saturation($color));
+  @return hsl(45deg, $saturation, 50%);
+}
+
+@function generateColorInfo($color) {
+  $saturation: normalizeSaturation(saturation($color));
+  @return hsl(240deg, $saturation, 50%);
+}
+
+@function generateColorDanger($color) {
+  $saturation: normalizeSaturation(saturation($color));
+  @return hsl(0deg, $saturation, 50%);
+}
+
+@function color($key) {
+  @return map-get($colors, $key);
+}
+
+@function size($size) {
+  @return $root-font-size * $size;
+}
+
+@function mediaQuery($key) {
+  @return map_get($media-queries, $key);
+}
+
+@mixin sizeHelper($property, $index, $size, $media_query) {
+  $directions: ('' : '', '-top': '-t', '-right': '-r', '-bottom': '-b', '-left': '-l');
+  @each $key, $direction in $directions {
+    $class: str-slice($property, 1, 1)  + '-' + $index + $direction + $media_query;
+    $temp_property: $property + $key;
+    .#{$class} {
+      #{$temp_property}: size($size) !important;
+    }
+  }
+}

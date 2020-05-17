@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,700&amp;subset=cyrillic,cyrillic-ext,latin-ext");
+
+$ratio: 1.5;
+$root-font-size: 11px;
+$default-font-family: 'Roboto Mono', monospace;
+$sizes: (0.25, 0.5, 1, 1.5, 2, 3, 4);
+
+$max-h: 900px;
+$max-m: 560px;
+$max-s: 320px;
+
+$primary: #72ef36;
+$secondary: #3c3241;
+
+$light: 300;
+$strong: 700;
+$regular: 400;
+
+$grid-columns: (
+        12, 15
+);
+
+$media-queries: (
+        'x': 576px,
+        's': 768px,
+        'm': 992px,
+        'h': 1200px,
+);

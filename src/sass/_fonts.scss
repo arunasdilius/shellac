@@ -1,0 +1,80 @@
+.underline {
+  text-decoration: underline;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+a {
+  color: $primary-dark;
+  @extend .underline;
+}
+
+hr, .hr {
+  border-top: none;
+  border-bottom: 1px solid $black;
+}
+
+mark, .mark, .highlight {
+  background-color: rgba($accent, 50%);
+  padding-right: 0.2em;
+  padding-left: 0.2em;
+}
+
+del, .del, s, .s, strike, .strike {
+  text-decoration: line-through;
+}
+
+u, .u, ins, .ins {
+  @extend .underline;
+}
+
+small, .small, .light {
+  font-weight: $light;
+}
+
+strong, .strong, b, .b, .bold {
+  font-weight: $strong;
+}
+
+i, .i, .italic, cite, .cite, em, .em, var, .var, address, .address, dfn, .dfn {
+  font-style: italic;
+}
+
+abbr[title] {
+  @extend .underline;
+  cursor: help;
+  border-bottom: 0;
+}
+
+.regular {
+  font-weight: $regular !important;
+}
+
+h1, .h1 {
+  @extend .light;
+  font-size: size(3) !important;
+  line-height: size(4) !important;
+}
+
+h2, .h2 {
+  @extend .strong;
+  font-size: size(2) !important;
+  line-height: size(3) !important;
+}
+
+h3, .h3 {
+  font-size: size(2) !important;
+  line-height: size(3) !important;
+}
+
+h4, .h4 {
+  @extend .strong;
+  font-size: size(1.5) !important;
+  line-height: size(2) !important;
+}
+
+h5, .h5 {
+  font-size: size(1.5) !important;
+  line-height: size(2) !important;
+  @extend .small;
+}

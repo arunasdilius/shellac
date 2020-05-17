@@ -1,0 +1,27 @@
+[class^="b-"], [class*=" b-"] {
+  border-style: solid;
+  border-width: 0;
+  @each $key, $val in $colors {
+    &.b-#{$key}-t{
+      border-top-width: 1px;
+      border-top-color: #{$val};
+    }
+    &.b-#{$key}-r{
+      border-right-width: 1px;
+      border-right-color: #{$val};
+    }
+    &.b-#{$key}-b{
+      border-bottom-width: 1px;
+      border-bottom-color: #{$val};
+    }
+    &.b-#{$key}-l{
+      border-left-width: 1px;
+      border-left-color: #{$val};
+    }
+    &.b-#{$key}{
+      border-width: 1px;
+      border-color: #{$val};
+    }
+  }
+}
+

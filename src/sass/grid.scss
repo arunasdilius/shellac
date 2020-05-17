@@ -1,0 +1,59 @@
+@each $name, $max_width in $media-queries {
+  .max-#{$name} {
+    max-width: $max-width !important;
+  }
+}
+
+.max-default {
+  max-width: $default-max-width;
+}
+
+.max-medium {
+  max-width: $medium-max-width;
+}
+
+[class^="row-"], [class*=" row-"] {
+  &:before, &:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    content: " ";
+    clear: both;
+  }
+}
+
+[class*="row-"] > {
+  [class^="col-"], [class*=" col-"] {
+    width: 100%;
+    float: left;
+    min-height: 1px;
+  }
+}
+
+@each $grid in $grid-columns {
+  .row-#{$grid} > {
+    @for $i from 0 through $grid {
+      $width: percentage((1/ $grid) * $i);
+      .col-#{$i} {
+        width: $width;
+      }
+      .col-offset-#{$i} {
+        margin-left: $width;
+      }
+    }
+    @each $name, $min_width in $media_queries {
+      @media (min-width: $min_width) {
+        @for $i from 0 through $grid {
+          $width: percentage((1/ $grid) * $i);
+          .col-#{$i}-#{$name} {
+            width: $width;
+          }
+          .col-offset-#{$i}-#{$name} {
+            margin-left: $width;
+          }
+        }
+      }
+    }
+  }
+}

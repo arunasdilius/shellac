@@ -1,0 +1,32 @@
+.badge, [class^="badge"], [class*=" badge"] {
+  display: inline-block;
+  text-align: center;
+  font-size: 11px;
+  color: $light;
+  background-color: $primary;
+  padding: 5px 10px;
+  font-weight: $strong;
+  @include border-radius(3px);
+}
+
+@mixin colorBadge($name, $background) {
+  .badge-#{$name} {
+    background-color: $background;
+  }
+}
+
+@include colorBadge('primary', $primary);
+@include colorBadge('secondary', $secondary);
+@include colorBadge('tertiary', $tertiary);
+
+@include colorBadge('success', $success);
+@include colorBadge('info', $info);
+@include colorBadge('warning', $warning);
+@include colorBadge('danger', $danger);
+
+@include colorBadge('dark-15', $dark-15);
+
+@include colorBadge('quickfire', $quickfire);
+@include colorBadge('discuss', $discuss);
+@include colorBadge('team_up', $team_up);
+@include colorBadge('clip', $clip);

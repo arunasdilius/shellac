@@ -1,0 +1,35 @@
+@mixin helper($property, $sizes, $media_query) {
+  $directions: ('' : '', '-top': '-t', '-right': '-r', '-bottom': '-b', '-left': '-l');
+  @each $size in $sizes {
+    @each $key, $direction in $directions {
+      $class: str-slice($property, 1, 1)  + '-' + map-get($size, 'name') + $direction + $media_query;
+      $temp_property: $property + $key;
+      .#{$class} {
+        #{$temp_property}: map-get($size, 'size') !important;
+      }
+    }
+  }
+}
+
+$sizes: (
+        ('size': -5px, 'name': '-5'),
+        ('size': -10px, 'name': '-10'),
+        ('size': -20px, 'name': '-20'),
+        ('size': 0, 'name': '0'),
+        ('size': 5px, 'name': '5'),
+        ('size': 10px, 'name': '10'),
+        ('size': 15px, 'name': '15'),
+        ('size': 20px, 'name': '20'),
+        ('size': 25px, 'name': '25'),
+        ('size': 30px, 'name': '30'),
+);
+
+@include helper(margin, $sizes, '');
+@include helper(padding, $sizes, '');
+
+@each $query, $min_width in $media-queries {
+  @media (min-width: $min_width) {
+    @include helper(margin, $sizes, '-' + $query);
+    @include helper(padding, $sizes, '-' + $query);
+  }
+}

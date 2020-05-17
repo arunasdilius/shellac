@@ -1,0 +1,46 @@
+[class^="loader"], [class*=" loader"] {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  content: '';
+  text-indent: -1000em;
+  border: 5px solid transparentize($dark, 0.5);
+  border-top: 5px solid $dark;
+}
+
+@mixin generateLoader($name, $color) {
+  .loader-#{$name} {
+    border: 5px solid transparentize($color, 0.5);
+    border-top: 5px solid $color;
+  }
+}
+
+@include generateLoader('primary', $primary);
+@include generateLoader('secondary', $secondary);
+@include generateLoader('tertiary', $tertiary);
+
+@include generateLoader('quickfire', $quickfire);
+@include generateLoader('discuss', $discuss);
+@include generateLoader('clip', $clip);
+@include generateLoader('team_up', $team_up);
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

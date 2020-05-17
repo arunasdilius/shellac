@@ -1,0 +1,24 @@
+{
+  "name": "shellac",
+  "version": "1.0.0",
+  "description": "Shellac style guide",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node-sass src/sass/shellac.scss src/css/shellac.css",
+    "watch": "node-sass -w src/sass/shellac.scss src/css/shellac.css",
+    "production": "node-sass src/sass/shellac.scss src/css/shellac.min.css --output-style=compressed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/arunasdilius/shellac.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/arunasdilius/shellac#readme",
+  "devDependencies": {
+    "node-sass": "^4.10.0"
+  },
+  "dependencies": {
+    "normalize-scss": "^7.0.1"
+  }
+}

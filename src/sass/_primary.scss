@@ -1,0 +1,47 @@
+html {
+  font-family: $default-font-family, sans-serif;
+  font-size: $root-font-size;
+  line-height: $ratio;
+  font-weight: $regular;
+  padding: 0;
+  margin: 0;
+  color: $black;
+  background-color: $white;
+  height: 100%;
+  vertical-align: baseline;
+  min-width: 320px;
+  min-height: 480px;
+  body {
+    min-height: 100%;
+    margin: 0;
+    position: relative;
+  }
+  * {
+    &:focus {
+      outline: none;
+    }
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    vertical-align: inherit;
+    color: inherit;
+    background-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    word-wrap: break-word;
+    @include box-sizing(border-box);
+  }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.br {
+  @include border-radius(3px);
+}

@@ -1,0 +1,68 @@
+[class^="flash-"], [class*=" flash-"] {
+  color: $light;
+  overflow: hidden;
+  position: relative;
+  min-height: 80px;
+  display: table;
+  width: 100%;
+  @include border-radius(3px);
+  [class*="icon"] {
+    width: 80px;
+    height: 80px;
+    font-size: 30px;
+    text-align: center;
+  }
+  & > * {
+    display: table-cell;
+    vertical-align: middle;
+    &:nth-child(2) {
+      & > * {
+        display: block;
+        font-size: 16px;
+        min-height: initial;
+        font-weight: $strong;
+        &:nth-child(2) {
+          font-weight: $regular;
+        }
+      }
+    }
+    &:nth-child(2), &:nth-child(3) {
+      padding: 0 20px 0 20px;
+    }
+  }
+  .flash-dismiss {
+    font-family: 'Spiral-v2';
+    &:before {
+      content: "\e913";
+    }
+    padding: 0 20px;
+    text-align: right;
+    font-size: 20px;
+    width: initial;
+    min-height: initial;
+    cursor: pointer;
+  }
+  [class*="btn"] {
+    float: right;
+  }
+}
+
+@mixin generateColoredFlash($name, $color) {
+  .flash-#{$name} {
+    background-color: $color;
+    [class*="icon-"] {
+      background-color: mix(black, $color, 6%);
+    }
+  }
+}
+
+@include generateColoredFlash('info', $info);
+@include generateColoredFlash('success', $success);
+@include generateColoredFlash('warning', $warning);
+@include generateColoredFlash('danger', $danger);
+@include generateColoredFlash('primary', $primary);
+
+@include generateColoredFlash('quickfire', $quickfire);
+@include generateColoredFlash('discuss', $discuss);
+@include generateColoredFlash('team_up', $team_up);
+@include generateColoredFlash('clip', $clip);

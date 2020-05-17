@@ -1,0 +1,282 @@
+.center {
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.mover {
+  cursor: move;
+}
+
+.clear {
+  &:before, &:after {
+    content: '';
+    clear: both;
+    display: block;
+  }
+}
+
+.flex {
+  display: -webkit-flex !important;
+  display: flex !important;
+  -webkit-flex-wrap: wrap !important;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  flex-wrap: wrap !important;
+  &.vertical {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    & > .flex-auto {
+      height: 0;
+    }
+  }
+  &:not(.vertical) {
+    & > .flex-auto {
+      width: 0;
+    }
+  }
+  &.stretch {
+    align-items: stretch;
+  }
+  &.middle {
+    align-items: center;
+  }
+  &:before, &:after {
+    content: normal;
+  }
+  & > .flex-static {
+    flex: 0 0 auto;
+  }
+  & > .flex-auto {
+    flex: 1 1;
+  }
+}
+
+.oh {
+  overflow: hidden !important;
+}
+
+%ratio-box {
+  width: 100%;
+  position: relative;
+  display: block;
+  & > * {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+  }
+  &:before {
+    content: "";
+    display: block;
+  }
+}
+
+.r1-1 {
+  @extend %ratio-box;
+  &:before {
+    padding-top: 100%;
+  }
+}
+
+.r16-9 {
+  @extend %ratio-box;
+  &:before {
+    padding-top: 56.25%;
+  }
+}
+
+.truncate {
+  max-width: 100%;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.center-middle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0;
+  &:before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+  }
+  & > * {
+    font-size: 1rem;
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+    display: inline-block;
+    position: relative;
+    & > * {
+      vertical-align: baseline; // reset vertical align to default
+    }
+  }
+}
+
+.bg-img {
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+.vam {
+  vertical-align: middle !important;
+}
+
+.vab {
+  vertical-align: baseline !important;
+}
+
+.abs {
+  position: absolute !important;
+}
+
+.rel {
+  position: relative !important;
+}
+
+.fix {
+  position: fixed !important;
+}
+
+.right {
+  float: right !important;
+}
+
+.left {
+  float: left !important;
+}
+
+.no {
+  display: none !important;
+}
+
+.tbl {
+  width: 100%;
+  display: table !important;
+}
+
+.tblc {
+  display: table-cell !important;
+  vertical-align: middle;
+  -ms-word-break: break-word;
+  word-break: break-word;
+  /* Non standard for webkit */
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+.bl {
+  display: block !important;
+}
+
+.inbl {
+  display: inline-block !important;
+}
+
+.in {
+  display: inline !important;
+}
+
+.tc {
+  text-align: center !important;
+}
+
+.tl {
+  text-align: left !important;
+}
+
+.tr {
+  text-align: right !important;
+}
+
+@each $name, $media in $media_queries {
+  @media (min-width: $media) {
+    .flex > .flex-static-#{$name} {
+      flex: 0 0 auto;
+    }
+    .flex > .flex-auto-#{$name} {
+      flex: 1 1;
+    }
+
+    .abs-#{$name} {
+      position: absolute !important;
+    }
+
+    .rel-#{$name} {
+      position: relative !important;
+    }
+
+    .fix-#{$name} {
+      position: fixed !important;
+    }
+
+    .right-#{$name} {
+      float: right !important;
+    }
+
+    .left-#{$name} {
+      float: left !important;
+    }
+
+    .no-#{$name} {
+      display: none !important;
+    }
+
+    .tbl-#{$name} {
+      width: 100%;
+      display: table !important;
+    }
+
+    .tblc-#{$name} {
+      display: table-cell !important;
+      vertical-align: middle;
+    }
+
+    .bl-#{$name} {
+      display: block !important;
+    }
+
+    .inbl-#{$name} {
+      display: inline-block !important;
+    }
+
+    .in-#{$name} {
+      display: inline !important;
+    }
+
+    .tc-#{$name} {
+      text-align: center !important;
+    }
+
+    .tl-#{$name} {
+      text-align: left !important;
+    }
+
+    .tr-#{$name} {
+      text-align: right !important;
+    }
+  }
+}

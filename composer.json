@@ -1,0 +1,11 @@
+{
+    "name": "spiralac/spiral-style-guide",
+    "description": "Sass package for Spiral style guide",
+    "authors": [
+        {
+            "name": "Arunas Dilius",
+            "email": "arunas@spiral.ac"
+        }
+    ],
+    "require": {}
+}

@@ -1,0 +1,94 @@
+[data-tiny-image] {
+  cursor: pointer;
+}
+
+.list > * {
+  padding: 7px 10px;
+  &:nth-child(odd) {
+    background-color: $dark-05;
+    @include border-radius(3px);
+  }
+}
+
+.panel {
+  background-color: $light;
+  padding: 20px 20px 10px 20px;
+  margin-bottom: 20px;
+  @extend .sh;
+  @extend .br;
+}
+
+%colored-panel {
+  @extend .panel;
+  position: relative;
+  &:after {
+    content: '';
+    display: block;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+  }
+}
+
+.panel-success {
+  @extend %colored-panel;
+  &:after {
+    background-color: $success;
+  }
+}
+
+.panel-quickfire {
+  @extend %colored-panel;
+  &:after {
+    background-color: $quickfire;
+  }
+}
+
+.panel-discuss {
+  @extend %colored-panel;
+  &:after {
+    background-color: $discuss;
+  }
+}
+
+.panel-clip {
+  @extend %colored-panel;
+  &:after {
+    background-color: $clip;
+  }
+}
+
+.panel-team_up {
+  @extend %colored-panel;
+  &:after {
+    background-color: $team_up;
+  }
+}
+
+.progress {
+  position: relative;
+  background-color: $dark-15;
+  height: 24px;
+  width: 100%;
+  @include border-radius(3px);
+  overflow: hidden;
+  [class*=" bar-"], [class^="bar-"] {
+    position: absolute;
+    height: 24px;
+    @include transition(all 1s ease);
+  }
+  .bar-success {
+    background-color: $success;
+  }
+  .bar-warning {
+    background-color: $warning;
+  }
+  .bar-info {
+    background-color: $info;
+  }
+  .bar-danger {
+    background-color: $danger;
+  }
+}

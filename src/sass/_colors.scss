@@ -1,0 +1,12 @@
+@each $key, $val in $colors {
+  .bg-#{$key} {
+    background-color: #{$val};
+  }
+  .c-#{$key} {
+    color: #{$val};
+  }
+}
+
+.sh {
+  @include box-shadow(0, 0, 5px, 0, $grey-dark);
+}
